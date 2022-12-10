@@ -1,6 +1,4 @@
 import AppController from '../controller/controller';
-import { EverythingData } from '../controller/loader';
-
 import { AppView } from '../view/appView';
 import { nonNullQuerySelector } from '../view/news/news';
 
@@ -13,7 +11,7 @@ class App {
     this.view = new AppView();
   }
 
-  start() {
+  public start() {
     nonNullQuerySelector(document, '.sources').addEventListener('click', (e) =>
       this.controller.getNews(e, (data) => this.view.drawNews(data))
     );

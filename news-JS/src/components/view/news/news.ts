@@ -13,7 +13,7 @@ export function nonNullQuerySelector(parentNode: ParentNode, selector: string): 
 }
 
 class News {
-  draw(data: everythingObject[]) {
+  public draw(data: everythingObject[]) {
     const news = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
 
     const fragment = document.createDocumentFragment();

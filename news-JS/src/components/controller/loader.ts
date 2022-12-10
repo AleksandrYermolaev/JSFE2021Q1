@@ -49,7 +49,7 @@ class Loader {
     this.options = options;
   }
 
-  public getResp<T>(
+  protected getResp<T>(
     { endpoint, options = {} }: { endpoint: endpointType; options?: { sources?: string } },
     callback: callbackType<T> = () => {
       console.error('No callback for GET response');

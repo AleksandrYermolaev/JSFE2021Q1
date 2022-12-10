@@ -3,7 +3,7 @@ import { nonNullQuerySelector } from '../news/news';
 import './sources.css';
 
 class Sources {
-  draw(data: sourceObject[]) {
+  public draw(data: sourceObject[]) {
     const fragment = document.createDocumentFragment();
     const sourceItemTemp = document.querySelector('#sourceItemTemp');
     if (!(sourceItemTemp instanceof HTMLTemplateElement)) {
