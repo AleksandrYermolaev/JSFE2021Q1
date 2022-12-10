@@ -51,7 +51,7 @@ class Loader {
 
     public getResp(
         { endpoint, options = {} }: { endpoint: endpointType; options?: { sources?: string } },
-        callback: callbackType<void> = () => {
+        callback: callbackType<EverythingData | SourceData> = () => {
             console.error('No callback for GET response');
         }
     ): void {

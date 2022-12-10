@@ -1,8 +1,8 @@
 import AppLoader from './appLoader';
-import { callbackType } from './loader';
+import { callbackType, EverythingData, SourceData } from './loader';
 
 class AppController extends AppLoader {
-    getSources(callback: callbackType<void>) {
+    getSources(callback: callbackType<EverythingData | SourceData>) {
         super.getResp(
             {
                 endpoint: 'sources',
@@ -11,13 +11,21 @@ class AppController extends AppLoader {
         );
     }
 
-    getNews(e: Event, callback: callbackType<void>) {
+    getNews(e: Event, callback: callbackType<EverythingData | SourceData>) {
         let target = e.target;
+
         const newsContainer = e.currentTarget;
+        if (!(newsContainer instanceof HTMLElement)) {
+          throw new Error('No target Element');
+        }
 
         while (target !== newsContainer) {
+          if (target !== null && target instanceof HTMLElement) {
             if (target.classList.contains('source__item')) {
                 const sourceId = target.getAttribute('data-source-id');
+                if (!sourceId) {
+                  throw new Error('No target Element');
+                }
                 if (newsContainer.getAttribute('data-source') !== sourceId) {
                     newsContainer.setAttribute('data-source', sourceId);
                     super.getResp(
@@ -33,6 +41,7 @@ class AppController extends AppLoader {
                 return;
             }
             target = target.parentNode;
+          }
         }
     }
 }
