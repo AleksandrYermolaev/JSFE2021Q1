@@ -1,7 +1,7 @@
 import { everythingObject } from '../../controller/loader';
 import './news.css';
 
-function nonNullQuerySelector(parentNode: ParentNode, selector: string): HTMLElement {
+export function nonNullQuerySelector(parentNode: ParentNode, selector: string): HTMLElement {
   const elem = parentNode.querySelector(selector);
   if (!elem) {
     throw new Error('Must be an HTMLElement!');

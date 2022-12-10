@@ -1,4 +1,4 @@
-type sourceObject = {
+export type sourceObject = {
   id: string;
   name: string;
   description: string;
