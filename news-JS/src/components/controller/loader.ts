@@ -39,7 +39,7 @@ type urlObject = {
 
 type endpointType = 'sources' | 'everything';
 
-export type callbackType<T> = (d?: T) => void;
+export type callbackType<T> = (d: T) => void;
 
 class Loader {
   baseLink: string;
@@ -49,9 +49,9 @@ class Loader {
     this.options = options;
   }
 
-  public getResp(
+  public getResp<T>(
     { endpoint, options = {} }: { endpoint: endpointType; options?: { sources?: string } },
-    callback: callbackType<EverythingData | SourceData> = () => {
+    callback: callbackType<T> = () => {
       console.error('No callback for GET response');
     }
   ): void {
@@ -79,16 +79,16 @@ class Loader {
     return url.slice(0, -1);
   }
 
-  private load(
+  private load<T>(
     method: string,
     endpoint: endpointType,
-    callback: callbackType<EverythingData | SourceData>,
+    callback: callbackType<T>,
     options: { sources?: string } = {}
   ) {
     fetch(this.makeUrl(options, endpoint), { method })
       .then(this.errorHandler)
       .then((res) => res.json())
-      .then((data: EverythingData | SourceData) => callback(data))
+      .then((data: T) => callback(data))
       .catch((err: ErrorCallback) => console.error(err));
   }
 }
