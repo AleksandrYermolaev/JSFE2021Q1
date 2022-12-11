@@ -3,7 +3,9 @@ import { nonNullQuerySelector } from '../news/news';
 import './sources.css';
 
 class Sources {
-  public draw(data: sourceObject[]) {
+  public draw(
+    data: Readonly<Pick<sourceObject, 'id' | 'name' | 'description' | 'url' | 'category' | 'language' | 'country'>>[]
+  ) {
     const fragment = document.createDocumentFragment();
     const sourceItemTemp = document.querySelector('#sourceItemTemp');
     if (!(sourceItemTemp instanceof HTMLTemplateElement)) {

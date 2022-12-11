@@ -1,4 +1,4 @@
-import { everythingObject } from '../../controller/loader';
+import { sourceObject } from '../../controller/loader';
 import './news.css';
 
 export function nonNullQuerySelector(parentNode: ParentNode, selector: string): HTMLElement {
@@ -13,7 +13,14 @@ export function nonNullQuerySelector(parentNode: ParentNode, selector: string): 
 }
 
 class News {
-  public draw(data: everythingObject[]) {
+  public draw(
+    data: Readonly<
+      Pick<
+        sourceObject,
+        'source' | 'author' | 'title' | 'description' | 'url' | 'urlToImage' | 'publishedAt' | 'content'
+      >
+    >[]
+  ) {
     const news = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
 
     const fragment = document.createDocumentFragment();
