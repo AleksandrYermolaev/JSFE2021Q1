@@ -26,4 +26,11 @@ class Sources {
   }
 }
 
+const pickButton = nonNullQuerySelector(document, '.choose__button');
+export const newsBlock = nonNullQuerySelector(document, '.sources');
+const openCloseNews = () => {
+  newsBlock.classList.toggle('active');
+};
+pickButton.addEventListener('click', openCloseNews);
+
 export default Sources;

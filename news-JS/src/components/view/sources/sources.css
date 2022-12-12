@@ -1,31 +1,100 @@
+.choose {
+  margin: 0.5rem;
+}
+.choose__button {
+  font: 300 1.5rem 'Fira Sans', sans-serif;
+  background: none;
+  border: 2px solid #0f00e2;
+  padding: 1rem 2rem;
+  color: #ffffff;
+  transition: 0.5s ease;
+  cursor: pointer;
+}
+
+.choose__button:hover {
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
 .sources {
-    display: flex;
-    flex-wrap: nowrap;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
     width: 100%;
-    height: 120px;
+    height: 0;
     overflow: auto;
     align-items: center;
-    font: 300 1em 'Fira Sans', sans-serif;
+    font: 300 1rem 'Fira Sans', sans-serif;
+    transition: 0.3s ease;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  background-color: rgba(15, 0, 226, 0.452);
+}
+::-webkit-scrollbar-thumb {
+  background-color: #ffffff;
+}
+
+
+@media (max-width: 1850px) {
+  .sources {
+    grid-template-columns: repeat(6, 1fr);
+}
+}
+@media (max-width: 1580px) {
+  .sources {
+    grid-template-columns: repeat(5, 1fr);
+}
+} 
+@media (max-width: 1400px) {
+  .sources {
+    grid-template-columns: repeat(4, 1fr);
+}
+} 
+@media (max-width: 1100px) {
+  .sources {
+    grid-template-columns: repeat(3, 1fr);
+}
+} 
+@media (max-width: 830px) {
+  .sources {
+    grid-template-columns: repeat(2, 1fr);
+}
+} 
+@media (max-width: 590px) {
+  .sources {
+    grid-template-columns: 1fr;
+}
+} 
+
+.active {
+  border: 1px solid #ffffff;
+  height: 300px;
 }
 
 .source__item {
     background: none;
-    border: 2px solid #30c5ff;
+    border: 2px solid #0f00e2;
     font: inherit;
     line-height: 1;
-    margin: 0.5em;
-    padding: 1em 2em;
-    color: #70d6ff;
+    margin: 0.5rem;
+    padding: 1rem 2rem;
+    color: #ffffff;
     transition: 0.25s;
     cursor: pointer;
+}
+@media (max-width: 490px) {
+  html {
+    font-size: 12px;
+  }
 }
 
 .source__item:hover,
 .source__item:focus {
-    border-color: #3fcc59;
-    color: #69db7e;
-    box-shadow: 0 0.5em 0.5em -0.4em #3fcc59;
-    transform: translateY(-0.25em);
+    border-color: #ffffff;
+    color: #ffffff;
+    box-shadow: 0 0.5rem 0.5rem -0.4rem #ffffff;
+    transform: translateY(-0.25rem);
 }
 
 .source__item-name {

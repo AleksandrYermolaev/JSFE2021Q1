@@ -1,6 +1,7 @@
 import AppController from '../controller/controller';
 import { AppView } from '../view/appView';
 import { nonNullQuerySelector } from '../view/news/news';
+import { newsBlock } from '../view/sources/sources';
 
 class App {
   controller: AppController;
@@ -12,9 +13,10 @@ class App {
   }
 
   public start() {
-    nonNullQuerySelector(document, '.sources').addEventListener('click', (e) =>
-      this.controller.getNews(e, (data) => this.view.drawNews(data))
-    );
+    nonNullQuerySelector(document, '.sources').addEventListener('click', (e) => {
+      this.controller.getNews(e, (data) => this.view.drawNews(data));
+      newsBlock.classList.toggle('active');
+    });
     this.controller.getSources((data) => this.view.drawSources(data));
   }
 }
